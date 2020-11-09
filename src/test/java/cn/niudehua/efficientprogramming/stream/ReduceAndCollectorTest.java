@@ -19,7 +19,6 @@ public class ReduceAndCollectorTest {
 
     @Test
     public void reduceTest() {
-
         // 订单对象
         @Data
         @AllArgsConstructor
@@ -36,15 +35,12 @@ public class ReduceAndCollectorTest {
              * 消费总金额
              */
             private Double totalAmount;
-
         }
-
         // 准备数据
         List<Order> list = new ArrayList<>();
         list.add(new Order(1, 2, 25.12));
         list.add(new Order(2, 5, 257.23));
         list.add(new Order(3, 3, 23332.12));
-
         // 1.计算商品数量
         // 2.计算消费总金额
         Order order = list.stream()
@@ -91,10 +87,6 @@ public class ReduceAndCollectorTest {
              * 消费总金额
              */
             private Double totalAmount;
-
-            public Order() {
-
-            }
         }
 
         // 准备数据
@@ -112,10 +104,10 @@ public class ReduceAndCollectorTest {
                         // 执行新元素添加到容器
                         (map, order) -> {
                             System.out.println("执行新元素添加到容器");
-                            map.merge(order.getAccount(), order, (order12, order2) -> {
-                                order12.setTotalAmount(order12.getTotalAmount() + order2.getTotalAmount());
-                                order12.setProductCount(order12.getProductCount() + order2.getProductCount());
-                                return order12;
+                            map.merge(order.getAccount(), order, (order1, order2) -> {
+                                order1.setTotalAmount(order1.getTotalAmount() + order2.getTotalAmount());
+                                order1.setProductCount(order1.getProductCount() + order2.getProductCount());
+                                return order1;
                             });
                         }, (map, map2) -> {
                             System.out.println("执行并行结果合并操作");
@@ -128,7 +120,5 @@ public class ReduceAndCollectorTest {
 
         System.out.println(JSON.toJSONString(collect, true));
     }
-
-
 }
 
