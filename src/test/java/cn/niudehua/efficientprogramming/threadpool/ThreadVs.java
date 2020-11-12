@@ -19,15 +19,15 @@ public class ThreadVs {
                 public void run() {
                     System.out.println("文档处理开始:" + Thread.currentThread().getName());
                     try {
-                        Thread.sleep(1000L * 30);
+                        Thread.sleep(1000L * 3);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    System.out.println("文档处理结束:" + Thread.currentThread().getName());
+                    System.out.println("文档处理结束:" + Thread.currentThread().getName()+"-----------");
                 }
             });
         }
-        Thread.sleep(1000L * 1000);
+        Thread.sleep(1000L * 60);
     }
 
     @Test
