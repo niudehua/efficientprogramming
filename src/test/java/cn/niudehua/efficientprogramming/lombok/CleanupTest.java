@@ -1,15 +1,9 @@
 package cn.niudehua.efficientprogramming.lombok;
 
-import com.google.common.base.Charsets;
-import com.google.common.io.CharSink;
-import com.google.common.io.CharSource;
-import com.google.common.io.Files;
 import lombok.Cleanup;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 

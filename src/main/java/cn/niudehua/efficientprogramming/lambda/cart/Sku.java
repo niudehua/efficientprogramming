@@ -35,5 +35,5 @@ public class Sku {
     /**
      * 商品类型
      */
-    private Enum skuCategory;
+    private SkuCategoryEnum skuCategory;
 }
