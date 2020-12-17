@@ -23,9 +23,7 @@ public class MultisetTest {
     public void handle() {
         final HashMultiset<Character> multiset = HashMultiset.create();
         final char[] chars = text.toCharArray();
-        Chars.asList(chars)
-                .stream()
-                .forEach(character -> multiset.add(character));
+        multiset.addAll(Chars.asList(chars));
         System.out.println("size:" + multiset.size());
         System.out.println(multiset);
         System.out.println(multiset.count('人'));

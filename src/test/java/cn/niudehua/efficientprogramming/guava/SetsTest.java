@@ -3,10 +3,8 @@ package cn.niudehua.efficientprogramming.guava;
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import com.google.common.collect.Sets.SetView;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -21,20 +19,20 @@ public class SetsTest {
 
     // Sets工具类的常用方法
     // 并集、交集、差集、分解集合中的所有子集、求两个集合的笛卡尔积
-    private static final Set set1 = Sets.newHashSet(1, 2, 3, 4);
-    private static final Set set2 = Sets.newHashSet(4, 5, 6);
+    private static final Set<Integer> set1 = Sets.newHashSet(1, 2, 3, 4);
+    private static final Set<Integer> set2 = Sets.newHashSet(4, 5, 6);
 
     @Test
     public void union() {
         //并集
-        final Set<Integer> union = Sets.union(set1, set2);
+        Set<Integer> union = Sets.union(set1, set2);
         System.out.println(union);
     }
 
     @Test
     public void intersection() {
         // 交集
-        final SetView intersection = Sets.intersection(set1, set2);
+        Set<Integer> intersection = Sets.intersection(set1, set2);
         System.out.println(intersection);
 
     }
@@ -42,7 +40,7 @@ public class SetsTest {
     @Test
     public void difference() {
         // 差集 set1存在 set2中不存在的元素
-        SetView difference = Sets.difference(set1, set2);
+        Set<Integer> difference = Sets.difference(set1, set2);
         System.out.println(difference);
         // 相对差集 set1中有但是set2中没有的元素 或者set2中有但是set1中没有的元素
         difference = Sets.symmetricDifference(set1, set2);
@@ -52,7 +50,7 @@ public class SetsTest {
     @Test
     public void powerSet() {
         // 拆分子集
-        final Set<List<Integer>> set = Sets.powerSet(set1);
+        Set<Set<Integer>> set = Sets.powerSet(set1);
         System.out.println(set);
         System.out.println(JSON.toJSONString(set));
     }
@@ -60,7 +58,7 @@ public class SetsTest {
     @Test
     public void cartesianProduct() {
         // 计算两个集合的笛卡尔积
-        final Set<List<Integer>> cartesianProduct = Sets.cartesianProduct(set1, set2);
+        Set<List<Integer>> cartesianProduct = Sets.cartesianProduct(set1, set2);
         System.out.println(cartesianProduct);
         System.out.println(JSON.toJSONString(cartesianProduct));
     }
@@ -72,7 +70,7 @@ public class SetsTest {
     public void partition() {
         // 拆分成 3个3个一组
         List<Integer> list = Lists.newArrayList(1, 2, 3, 4, 5, 6, 7);
-        final List<List<Integer>> partition = Lists.partition(list, 3);
+        List<List<Integer>> partition = Lists.partition(list, 3);
         System.out.println(JSON.toJSONString(partition));
     }
 

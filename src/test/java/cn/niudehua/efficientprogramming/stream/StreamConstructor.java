@@ -44,23 +44,21 @@ public class StreamConstructor {
 
     @Test
     public void streamFromFunction() {
-        Stream<Integer> iterate = Stream.iterate(0, new UnaryOperator<Integer>() {
-            @Override
-            public Integer apply(Integer integer) {
-                return integer + 2;
-            }
-        });
+        Stream<Integer> iterate = Stream.iterate(0, integer -> integer + 2);
         iterate.limit(5)
                 .forEach(System.out::println);
-//        Stream<Object> generate = Stream.generate(new Supplier<Object>() {
-//            @Override
-//            public Object get() {
-//
-//                return Math.random();
-//            }
-//        });
-//        generate.limit(100)
-//                .forEach(System.out::println);
+
+        Stream<Object> generate = Stream.generate(Math::random);
+        generate.limit(100)
+                .forEach(System.out::println);
+    }
+
+    @Test
+    public void parallelStream() {
+        int[] numbers = {1, 2, 3, 56, 7, 8, 9, 6, 54, 123, 3};
+
+        // 并行流 无序执行
+        Arrays.stream(numbers).parallel().forEach(System.out::println);
 
     }
 }

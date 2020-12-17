@@ -8,6 +8,10 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 /**
  * 归约与汇总操作
@@ -109,7 +113,9 @@ public class ReduceAndCollectorTest {
                                 order1.setProductCount(order1.getProductCount() + order2.getProductCount());
                                 return order1;
                             });
-                        }, (map, map2) -> {
+                        },
+                        // 执行并行结果合并操作
+                        (map, map2) -> {
                             System.out.println("执行并行结果合并操作");
                             map2.forEach((s, order) -> map.merge(s, order, (order1, order2) -> {
                                 order1.setTotalAmount(order1.getTotalAmount() + order2.getTotalAmount());
@@ -117,8 +123,9 @@ public class ReduceAndCollectorTest {
                                 return order1;
                             }));
                         });
+        List<Order> orders = new ArrayList<>(collect.values());
 
-        System.out.println(JSON.toJSONString(collect, true));
+        System.out.println(JSON.toJSONString(orders, true));
     }
 }
 

@@ -10,7 +10,6 @@ import lombok.ToString;
 
 @ToString(
         includeFieldNames = false,
-        exclude = {"field1"},
         of = {"field2"},
         doNotUseGetters = true
         )
