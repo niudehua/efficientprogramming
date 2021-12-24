@@ -60,8 +60,10 @@ public class StreamTest {
         personList.add(new Person("Owen", 9500, 25, "male", "New York"));
         personList.add(new Person("Alisa", 7900, 26, "female", "New York"));
 
-        List<String> filterList = personList.stream().filter(x -> x.getSalary() > 8000).map(Person::getName)
-                .collect(Collectors.toList());
+        List<String> filterList = personList.stream()
+            .filter(x -> x.getSalary() > 8000)
+            .map(Person::getName)
+            .collect(Collectors.toList());
         System.out.print("高于8000的员工姓名：" + filterList);
     }
 
@@ -69,7 +71,8 @@ public class StreamTest {
     public void test3() {
         // 获取String集合中最长的元素。
         List<String> list = Arrays.asList("adnm", "admmt", "pot", "xbangd", "weoujgsd");
-        Optional<String> max = list.stream().max(Comparator.comparing(String::length));
+        Optional<String> max = list.stream()
+            .max(Comparator.comparing(String::length));
         System.out.println("最长的字符串：" + max.get());
     }
 
@@ -78,14 +81,16 @@ public class StreamTest {
         List<Integer> list = Arrays.asList(7, 6, 9, 4, 11, 6);
         // 获取Integer集合中的最大值。
         // 自然排序
-        Optional<Integer> max = list.stream().max(Integer::compareTo);
+        Optional<Integer> max = list.stream()
+            .max(Integer::compareTo);
         // 自定义排序
-        Optional<Integer> max2 = list.stream().max(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o1.compareTo(o2);
-            }
-        });
+        Optional<Integer> max2 = list.stream()
+            .max(new Comparator<Integer>() {
+                @Override
+                public int compare(Integer o1, Integer o2) {
+                    return o1.compareTo(o2);
+                }
+            });
         System.out.println("自然排序的最大值：" + max.get());
         System.out.println("自定义排序的最大值：" + max2.get());
     }

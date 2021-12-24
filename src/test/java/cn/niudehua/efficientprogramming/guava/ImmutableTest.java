@@ -1,5 +1,6 @@
 package cn.niudehua.efficientprogramming.guava;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import org.assertj.core.util.Sets;
 import org.junit.Test;
@@ -46,9 +47,18 @@ public class ImmutableTest {
                 .addAll(list)
                 .add(2)
                 .add(2)
-                .add(2)
+                .add(5)
                 .build();
         System.out.println(immutableSet);
+        ImmutableList immutableList = ImmutableList.builder()
+            .add(1)
+            .add(1)
+            .add(1)
+            .add(1)
+            .add(1)
+            .build();
+        System.out.println(immutableList);
+
     }
 
 
